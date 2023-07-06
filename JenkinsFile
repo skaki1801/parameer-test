@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurper
+import groovy.json.JsonSlurperClassic
 
 pipeline {
   agent any
@@ -17,7 +17,7 @@ pipeline {
 
           // Read the JSON file
           def jsonContent = readFile(file: jsonFilePath)
-          def json = new JsonSlurper().parseText(jsonContent)
+          def json = new JsonSlurperClassic().parseText(jsonContent)
 
           // Iterate over each entry in the JSON
           json.each { entry ->
