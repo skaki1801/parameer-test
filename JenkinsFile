@@ -4,7 +4,7 @@ pipeline {
     AWS_REGION = 'eu-west-2'
   }
   parameters {
-    string(name: 'JSON_FILE_PATH', defaultValue: '', description: 'Enter the path to the JSON file')
+    string(name: 'JSON_FILE_PATH', defaultValue: '/var/lib/jenkins/workspace/testparameterstore/test.json')
   }
 
   stages {
