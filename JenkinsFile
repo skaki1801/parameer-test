@@ -13,9 +13,11 @@ pipeline {
         script {
           def jsonFilePath = params.JSON_FILE_PATH
 
-          // Read the JSON file using jq
+          // Read the JSON file using jq and capture the output
           def jsonContent = sh(script: "jq '.' ${jsonFilePath}", returnStdout: true).trim()
-          def json = jsonParse(jsonContent)
+
+          // Parse the JSON content using Groovy
+          def json = new groovy.json.JsonSlurperClassic().parseText(jsonContent)
 
           // Iterate over each entry in the JSON
           json.each { entry ->
