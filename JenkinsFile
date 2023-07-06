@@ -15,7 +15,7 @@ pipeline {
 
           // Read the JSON file using jq
           def jsonContent = sh(script: "jq '.' ${jsonFilePath}", returnStdout: true).trim()
-          def json = readJSON text: jsonContent
+          def json = jsonParse(jsonContent)
 
           // Iterate over each entry in the JSON
           json.each { entry ->
